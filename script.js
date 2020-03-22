@@ -1,28 +1,32 @@
+//array to hold user searches 
 var searches = []; 
 
-//even listener for dynamically generated previous search buttons 
+//event listener for dynamically generated previous search buttons 
 $(document).on("click",".prevSearchBtn",searchAgain);
 
+//render past searches on page load 
 renderSearches(); 
 
+//event listener for search button 
 $("#searchBtn").on("click",function(event) {
     //stop refresh 
     event.preventDefault(); 
-
+    //get search 
     searchInput = $("#search").val().trim(); 
-
+    //save the search and then search 
     saveSearch(searchInput); 
     search(searchInput); 
     //clear search from bar 
     $("#search").val(""); 
 }); 
 
+//renders previous searches 
 function renderSearches() {
-    //clear out empty searches 
+    //clear out searches 
     $("#prevSearches").empty(); 
     //grab saved searches 
     searches = JSON.parse(localStorage.getItem("searches")); 
-    //go through array and make buttons
+    //go through array and make buttons (if array is not empty)
     if(searches) {
         for(var i = 0; i < searches.length; i++) {
             //create new row for the button 
@@ -44,10 +48,9 @@ function renderSearches() {
         }
         //display most recent search 
         search(searches[searches.length - 1]); 
-    }
-    
+    }   
 }
-
+//saves searches to local storage 
 function saveSearch(searchItem) {
     //initialize array is neccessary 
     if(!searches) {
@@ -63,9 +66,10 @@ function saveSearch(searchItem) {
     renderSearches(); 
 }
 
+//ajax calls + and display search 
 function search(searchItem) {
     
-
+    //building ajax urls 
     var apiKey = "6f539c63cd3802e2eb82a7cccf50e151"; 
     var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchItem + "&appid=" + apiKey;
     var fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchItem + "&appid=" + apiKey;
@@ -130,9 +134,7 @@ function search(searchItem) {
                 uvButton.attr("class","redBtn")
             }
 
-
-
-            //create elements to be added 
+            //add the content to the page 
             $("#cityDiv").html("<h3>" + cityName + " " + date + "</h3>"); 
             $("#weatherDiv").html("<p>Weather: " + weather + "</p>"); 
             $("#tempDiv").html("<p>Temperature: " + temp + 	"&#176;" + "F</p>");  
@@ -140,16 +142,8 @@ function search(searchItem) {
             $("#windSpeedDiv").html("<p>Wind Speed: " + windSpeed + "MPH</p>"); 
             $("#uvDivCol1").html("<p>UV: "); 
             $("#uvDivCol2").empty(); 
-            $("#uvDivCol2").append(uvButton); 
-            
-           
-
-            
-                
+            $("#uvDivCol2").append(uvButton);          
         }); 
-
-
-
     }); 
 
     //call for five day forecast 
@@ -267,11 +261,12 @@ function search(searchItem) {
             $("#day5Weather").html("<p>Weather: " + weather + "</p>"); 
             $("#day5Temp").html("<p>Temperature: " + temp + "&#176;" + "F</p>"); 
             $("#day5Humidity").html("<p>Humidity: " + humidity + "%</p>"); 
-
     }); 
 }
-
+//is triggered when a previous search button is clicked 
 function searchAgain() {
+    //get the city name 
     var searchItem = $(this).text(); 
+    //search 
     search(searchItem); 
 }

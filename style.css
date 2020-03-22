@@ -1,9 +1,14 @@
+/* element selectors */
 header {
     padding: 10px; 
     margin-bottom: 25px;
     text-align: center; 
     color: white; 
     background-color: rgb(36, 36, 36); 
+}
+/* class selectors */
+.container-fluid {
+    width: 100% 
 }
 .prevSearchBtn {
     width: 50%; 
@@ -24,15 +29,10 @@ header {
 .redBtn {
     background-color: red; 
 }
-
-.container-fluid {
-    width: 100% 
-}
-
+/* id selectors */
 #searchBarRow {
     margin-bottom: 10px; 
 }
 #extendedForecast {
     margin-top: 20px; 
 }
-
