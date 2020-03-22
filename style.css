@@ -1,0 +1,38 @@
+header {
+    padding: 10px; 
+    margin-bottom: 25px;
+    text-align: center; 
+    color: white; 
+    background-color: rgb(36, 36, 36); 
+}
+.prevSearchBtn {
+    width: 50%; 
+    margin-left: 15px; 
+    background-color: transparent; 
+    padding: 5px; 
+
+}
+.greenBtn {
+    background-color: green; 
+}
+.yellowBtn {
+    background-color: yellow; 
+}
+.orangeBtn {
+    background-color: orange; 
+}
+.redBtn {
+    background-color: red; 
+}
+
+.container-fluid {
+    width: 100% 
+}
+
+#searchBarRow {
+    margin-bottom: 10px; 
+}
+#extendedForecast {
+    margin-top: 20px; 
+}
+
