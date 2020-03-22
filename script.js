@@ -42,9 +42,10 @@ function renderSearches() {
             //add row to proper place
             $("#prevSearches").prepend(newRow); 
         }
+        //display most recent search 
+        search(searches[searches.length - 1]); 
     }
-    //display most recent search 
-    search(searches[searches.length - 1]); 
+    
 }
 
 function saveSearch(searchItem) {
