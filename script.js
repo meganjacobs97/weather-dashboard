@@ -85,7 +85,7 @@ function search(searchItem) {
         //uv index 
         var lat = response.coord.lat; 
         var lon = response.coord.lon; 
-        var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon; 
+        var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon; 
         $.ajax({
             url: uvURL, 
             method: "GET"
